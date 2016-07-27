@@ -5,3 +5,14 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.button.button-dark {
+  background-color: rgba(130, 130, 130, 0.8);
+  font-size: x-large;
+}
+.button.button-dark:active {
+  background-color: rgba(247, 190, 129, 0.8);
+}
+.button.button-dark:hover {
+  background-color: rgba(255, 163, 70, 0.8);
+}
