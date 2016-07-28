@@ -28,3 +28,10 @@ angular.module('starter', ['ionic', 'ionic-modal-select'])
     return (value === undefined || value === null? def : value);
   };
 })
+
+// .config(function($httpProvider){
+//   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+//     $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+//     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+//     $httpProvider.defaults.headers.post['XSRF-AUTH'] = "access token";
+// });

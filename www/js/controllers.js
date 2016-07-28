@@ -1,4 +1,4 @@
-angular.module('starter').controller("MainCtrl", function($scope) {
+angular.module('starter').controller("MainCtrl", function($scope, Cities) {
   $scope.countries = [
     {no: "2", country: "TURKIYE", code: "tr"},
     {no: "33", country: "ABD", code: "us"},
@@ -13,6 +13,6 @@ angular.module('starter').controller("MainCtrl", function($scope) {
     {no: "153", country: "ARUBA", code: "aw"},
     {no: "59", country: "AVUSTRALYA", code: "au"},
     {no: "35", country: "AVUSTURYA", code: "at"},
-    {no: "5",country: "AZERBAYCAN", code:"az"}
+    {no: "5", country: "AZERBAYCAN", code: "az"}
   ];
 })
