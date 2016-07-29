@@ -1,6 +1,108 @@
+var modalSelectTemplates = modalSelectTemplates || {};modalSelectTemplates['modal-template-multiple.html'] = ' <ion-modal-view class="ionic-select-modal" ng-class="::ui.modalClass">\n' +
+    '    <ion-header-bar ng-class="::ui.headerFooterClass">\n' +
+    '      <h1 class="title">{{::ui.modalTitle}} MULTIPLE</h1>\n' +
+    '    </ion-header-bar>\n' +
+    '    <ion-content>\n' +
+    '\n' +
+    '    <div ng-if="!ui.shortList">\n' +
+    '        <div class="text-center" ng-if="!showList" style="padding-top:40px;">\n' +
+    '            <h4 class="muted">{{::ui.loadListMessage}}</h4>\n' +
+    '            <p>\n' +
+    '                <ion-spinner></ion-spinner>\n' +
+    '            </p>\n' +
+    '        </div>\n' +
+    '        <div class="list" ng-if="showList" class="animate-if">\n' +
+    '            <div class="item item-text-wrap" collection-repeat="option in options track by $index" ng-click="setOption(option)" ng-class="{\'{{::ui.selectedClass}}\': getSelectedValue(option) == ui.value}"> \n' +
+    '                <div compile="inner" compile-once="true"></div>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '    <div ng-if="ui.shortList">\n' +
+    '        <div class="list">\n' +
+    '            <div class="item item-checkbox" ng-repeat="option in options track by $index">\n' +
+    '                <label class="checkbox">\n' +
+    '                    <input type="checkbox" ng-model="isChecked[$index]">\n' +
+    '                </label>\n' +
+    '                <div compile="inner" compile-once="true"></div>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </div>\n' +
+    '    </ion-content>\n' +
+    '    <ion-footer-bar ng-class="::ui.headerFooterClass">\n' +
+    '        <button class="button button-stable" ng-click="closeModal()">{{ui.cancelButton}}</button>\n' +
+    '        <h2 class="title"><button class="button">OK</button></h2>\n' +
+    '        <button ng-if="::!ui.hideReset" class="button button-stable" ng-click="unsetValue()">{{ui.resetButton}}</button>\n' +
+    '    </ion-footer-bar>\n' +
+    '</ion-modal-view>\n' +
+    '';
+
+var modalSelectTemplates = modalSelectTemplates || {};modalSelectTemplates['modal-template.html'] = ' <ion-modal-view class="ionic-select-modal" ng-class="::ui.modalClass">\n' +
+    '    \n' +
+    '    <ion-header-bar ng-class="::ui.headerFooterClass">\n' +
+    '      <h1 class="title">{{::ui.modalTitle}}</h1>\n' +
+    '    </ion-header-bar>\n' +
+    '\n' +
+    '    <div class="bar bar-subheader item-input-inset" ng-class="::ui.subHeaderClass" ng-if="ui.hasSearch">\n' +
+    '      <label class="item-input-wrapper">\n' +
+    '        <i class="icon ion-ios-search placeholder-icon"></i>\n' +
+    '        <input type="search" placeholder="{{::ui.searchPlaceholder}}" ng-model="ui.searchValue">\n' +
+    '      </label>\n' +
+    '      <button type="button" class="button button-clear" ng-click="clearSearch()">\n' +
+    '        {{ ui.cancelSearchButton }}\n' +
+    '      </button>\n' +
+    '    </div>\n' +
+    '\n' +
+    '    <ion-content class="has-header" ng-class="{\'has-subheader\':ui.hasSearch}">\n' +
+    '        <div class="text-center" ng-if="!ui.shortList && !showList" style="padding-top:40px;">\n' +
+    '            <h4 class="muted">{{::ui.loadListMessage}}</h4>\n' +
+    '            <p>\n' +
+    '                <ion-spinner></ion-spinner>\n' +
+    '            </p>\n' +
+    '        </div>\n' +
+    '        <div ng-if="showList">\n' +
+    '            <div ng-if="!ui.shortList">\n' +
+    '                <div class="list" ng-if="showList" class="animate-if">\n' +
+    '                    <div class="item item-text-wrap" collection-repeat="option in options track by $index" ng-click="setOption(option)" ng-class="{\'{{::ui.selectedClass}}\': compareValues(getSelectedValue(option), ui.value) }"> \n' +
+    '                        <div compile="inner" compile-once="true"></div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '            <div ng-if="ui.shortList">\n' +
+    '                <div class="list">\n' +
+    '                    <div class="item item-text-wrap" ng-repeat="option in options track by $index" ng-click="setOption(option)" ng-class="{\'{{::ui.selectedClass}}\': compareValues(getSelectedValue(option), ui.value) }">\n' +
+    '                        <div compile="inner" compile-once="true"></div>\n' +
+    '                    </div>\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </ion-content>\n' +
+    '\n' +
+    '    <ion-footer-bar ng-class="::ui.headerFooterClass">\n' +
+    '        <button type="button" class="button button-stable modal-select-close-button" ng-click="closeModal()">{{ui.cancelButton}}</button>\n' +
+    '        <button type="button" ng-if="::!ui.hideReset" class="button button-stable" ng-click="unsetValue()">{{ui.resetButton}}</button>\n' +
+    '    </ion-footer-bar>\n' +
+    '\n' +
+    '</ion-modal-view>\n' +
+    '';
+
+/*!
+ * Copyright 2015 Inmagik SRL.
+ * http://www.inmagik.com/
+ *
+ * ionic-modal-select, v1.0.0
+ * Modal select directive for Ionic framework.
+ *
+ * By @bianchimro
+ *
+ * Licensed under the MIT license. Please see LICENSE for more information.
+ *
+ */
+
+
+
 (function(){
 
-angular.module('ionic-modal-select', [])
+angular.module('ionic-modal-select', ['starter'])
 
 .directive('compile', ['$compile', function ($compile) {
     return function(scope, iElement, iAttrs) {
@@ -29,7 +131,9 @@ angular.module('ionic-modal-select', [])
     };
 }])
 
-.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', function ($ionicModal, $timeout, $filter, $parse) {
+.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns) {
+    $rootScope.city_button = false;
+    $rootScope.town_button = false;
     return {
         restrict: 'A',
         require : 'ngModel',
@@ -162,7 +266,7 @@ angular.module('ionic-modal-select', [])
                 return val;
             };
 
-            scope.setOption = function(option){
+            scope.setOption = function(option, $scope){
                 var oldValue = ngModelController.$viewValue;
                 var val = getSelectedValue(option);
                 ngModelController.$setViewValue(val);
@@ -179,6 +283,20 @@ angular.module('ionic-modal-select', [])
                         }
                     }
                 });
+
+                if (val.country != null) {
+                  $rootScope.city_button = true;
+                  Cities.get(getSelectedValue(option).no).success(function(data) {
+                    $rootScope.cities = data;
+                  })
+                } else if (val.Text != null) {
+                  Towns.get(getSelectedValue(option).Value).success(function(data) {
+                    $rootScope.towns = data;
+                    if (typeof data[0] !== 'undefined') {
+                      $rootScope.town_button = true;
+                    }
+                  })
+                }
             };
 
             scope.unsetValue = function(){
