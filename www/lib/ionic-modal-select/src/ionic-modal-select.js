@@ -131,7 +131,7 @@ angular.module('ionic-modal-select', ['starter'])
     };
 }])
 
-.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns) {
+.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', 'Times', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns, Times) {
     $rootScope.city_button = false;
     $rootScope.town_button = false;
     return {
@@ -286,6 +286,7 @@ angular.module('ionic-modal-select', ['starter'])
 
                 if (val.country != null) {
                   $rootScope.city_button = true;
+                  $rootScope.country = val.no;
                   Cities.get(getSelectedValue(option).no).success(function(data) {
                     $rootScope.cities = data;
                   })
@@ -293,7 +294,14 @@ angular.module('ionic-modal-select', ['starter'])
                   Towns.get(getSelectedValue(option).Value).success(function(data) {
                     $rootScope.towns = data;
                     if (typeof data[0] !== 'undefined') {
+                      $rootScope.city = val.Value;
                       $rootScope.town_button = true;
+                    }
+                    else {
+                      Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {
+                        $rootScope.times = data;
+                        console.log($rootScope.times);
+                      })
                     }
                   })
                 }

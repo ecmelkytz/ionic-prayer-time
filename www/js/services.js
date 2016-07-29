@@ -17,3 +17,12 @@ angular.module('starter')
     get: get
   }
 })
+
+.factory('Times', function($http) {
+  var prayer_times = function(country_id, city_id, town_id) {
+    return $http.post("http://www.diyanet.gov.tr/PrayerTime/PrayerTimesSet", {"countryName": country_id, "stateName": city_id, "name": town_id })
+  };
+  return {
+    post: prayer_times
+  }
+})
