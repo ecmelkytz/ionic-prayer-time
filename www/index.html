@@ -49,6 +49,12 @@
               {{option.Text}}
            </div>
          </button>
+         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
+           {{nameTown.Text | default: 'Select a Town'}}
+           <div class="option">
+              {{option.Text}}
+           </div>
+         </button>
       </ion-content>
     </ion-pane>
   </body>
