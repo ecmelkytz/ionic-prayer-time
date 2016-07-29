@@ -36,25 +36,56 @@
         <h1 class="title">Prayer Times</h1>
       </ion-header-bar>
       <ion-content class="padding back">
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-if="country_button">
            {{nameCountry.country | default: 'Select a Country'}}
            <div class="option">
              <span class="flag-icon flag-icon-{{option.code}}"></span>
               {{option.country}}
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-if="city_button">
            {{nameCity.Text | default: 'Select a City'}}
            <div class="option">
               {{option.Text}}
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-if="town_button">
            {{nameTown.Text | default: 'Select a Town'}}
            <div class="option">
               {{option.Text}}
            </div>
          </button>
+
+         <div class="list" ng-if = "times_list">
+           <label class="item item-input">
+             <div class="input-label">Güneş: </div>
+             <div class="input-label">{{times.Gunes}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Güneş Batış: </div>
+             <div class="input-label">{{times.GunesBatis}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Güneş Doğuş: </div>
+             <div class="input-label">{{times.GunesDogus}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Öğle: </div>
+             <div class="input-label">{{times.Ogle}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Ikindi: </div>
+             <div class="input-label">{{times.Ikindi}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Aksam: </div>
+             <div class="input-label">{{times.Aksam}}</div>
+           </label>
+           <label class="item item-input">
+             <div class="input-label">Yatsı: </div>
+             <div class="input-label">{{times.Yatsi}}</div>
+           </label>
+         </div>
       </ion-content>
     </ion-pane>
   </body>

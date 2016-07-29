@@ -132,8 +132,10 @@ angular.module('ionic-modal-select', ['starter'])
 }])
 
 .directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', 'Times', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns, Times) {
+    $rootScope.country_button = true;
     $rootScope.city_button = false;
     $rootScope.town_button = false;
+    $rootScope.times_list = false;
     return {
         restrict: 'A',
         require : 'ngModel',
@@ -300,7 +302,10 @@ angular.module('ionic-modal-select', ['starter'])
                     else {
                       Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {
                         $rootScope.times = data;
-                        console.log($rootScope.times);
+                        $rootScope.country_button = false;
+                        $rootScope.city_button = false;
+                        $rootScope.town_button = false;
+                        $rootScope.times_list = true;
                       })
                     }
                   })
