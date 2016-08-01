@@ -1,4 +1,4 @@
-angular.module('starter').controller("MainCtrl", function($scope, Cities) {
+angular.module('starter').controller("MainCtrl", function($scope, Cities, $rootScope) {
   $scope.countries = [
     {no: "2", country: "TURKIYE", code: "tr"},
     {no: "33", country: "ABD", code: "us"},
@@ -15,4 +15,9 @@ angular.module('starter').controller("MainCtrl", function($scope, Cities) {
     {no: "35", country: "AVUSTURYA", code: "at"},
     {no: "5", country: "AZERBAYCAN", code: "az"}
   ];
+
+  $scope.refresh = function() {
+    $rootScope.times_list = false;
+    $rootScope.country_button = true;
+  }
 })

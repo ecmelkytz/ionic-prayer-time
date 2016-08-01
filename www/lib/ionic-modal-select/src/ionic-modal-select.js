@@ -307,10 +307,10 @@ angular.module('ionic-modal-select', ['starter'])
                       Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {
                         $rootScope.times = data;
                         //  http://diyanet.gov.tr//UserFiles//AyEvreleri//sd3.gif
+                        $rootScope.times_list = true;
                         $rootScope.country_button = false;
                         $rootScope.city_button = false;
                         $rootScope.town_button = false;
-                        $rootScope.times_list = true;
                       })
                     }
                   })

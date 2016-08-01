@@ -36,20 +36,20 @@
         <h1 class="title">Prayer Times</h1>
       </ion-header-bar>
       <ion-content class="padding back">
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-if="country_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-show="country_button">
            {{nameCountry.country | default: 'Select a Country'}}
            <div class="option">
              <span class="flag-icon flag-icon-{{option.code}}"></span>
               {{option.country}}
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-if="city_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
            {{nameCity.Text | default: 'Select a City'}}
            <div class="option">
               {{option.Text}}
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-if="town_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
            {{nameTown.Text | default: 'Select a Town'}}
            <div class="option">
               {{option.Text}}
@@ -93,6 +93,7 @@
              <div class="input-label"><b>Yatsı: </b></div>
              <div class="input-label"><b>{{times.Yatsi}}</b></div>
            </label>
+           <center><a href="#" class="icon ion-refresh refresh" ng-click = "refresh()"></a></center>
          </div>
       </ion-content>
     </ion-pane>
