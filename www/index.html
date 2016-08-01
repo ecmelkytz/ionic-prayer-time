@@ -60,7 +60,8 @@
            <div class="list-color">
            <center><h2>{{country_name}}</h2></center>
            <center><h4>{{city_name}}<h4>
-           <h5>{{town_name}}</h5></center></div>
+           <h5>{{town_name}}</h5>
+           <img ng-src="{{moon}}" style="height:80px"></center></div>
            <label class="item item-input list-color">
              <div class="input-label"><b>İmsak: </b></div>
              <div class="input-label"><b>{{times.Imsak}}</b></div>
@@ -93,7 +94,6 @@
              <div class="input-label"><b>Yatsı: </b></div>
              <div class="input-label"><b>{{times.Yatsi}}</b></div>
            </label>
-           <br>
            <center><a href="#" class="icon ion-refresh refresh" ng-click = "refresh()"></a></center>
          </div>
       </ion-content>

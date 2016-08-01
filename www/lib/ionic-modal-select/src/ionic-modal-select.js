@@ -131,7 +131,7 @@ angular.module('ionic-modal-select', ['starter'])
     };
 }])
 
-.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', 'Times', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns, Times) {
+.directive('modalSelect', ['$ionicModal','$timeout', '$filter', '$parse', '$rootScope', 'Cities', 'Towns', 'Times', '$sce', function ($ionicModal, $timeout, $filter, $parse, $rootScope, Cities, Towns, Times, $sce) {
     $rootScope.country_button = true;
     $rootScope.city_button = false;
     $rootScope.town_button = false;
@@ -306,7 +306,7 @@ angular.module('ionic-modal-select', ['starter'])
                     else {
                       Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {
                         $rootScope.times = data;
-                        //  http://diyanet.gov.tr//UserFiles//AyEvreleri//sd3.gif
+                        $rootScope.moon = $sce.trustAsResourceUrl("http://diyanet.gov.tr//UserFiles//AyEvreleri//" + data.MoonSrc);
                         $rootScope.times_list = true;
                         $rootScope.country_button = false;
                         $rootScope.city_button = false;
