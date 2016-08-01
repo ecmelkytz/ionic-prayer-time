@@ -16,3 +16,7 @@
 .button.button-dark:hover {
   background-color: rgba(255, 163, 70, 0.8);
 }
+
+.list-color {
+  background-color: rgba(230,210,210,0.8);
+}

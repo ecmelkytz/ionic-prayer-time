@@ -288,20 +288,25 @@ angular.module('ionic-modal-select', ['starter'])
 
                 if (val.country != null) {
                   $rootScope.city_button = true;
-                  $rootScope.country = val.no;
+                  $rootScope.country_no = val.no;
+                  $rootScope.country_name = val.country;
                   Cities.get(getSelectedValue(option).no).success(function(data) {
                     $rootScope.cities = data;
                   })
                 } else if (val.Text != null) {
                   Towns.get(getSelectedValue(option).Value).success(function(data) {
                     $rootScope.towns = data;
+                    $rootScope.town_no = val.Value;
+                    $rootScope.town_name = val.Text;
                     if (typeof data[0] !== 'undefined') {
-                      $rootScope.city = val.Value;
+                      $rootScope.city_no = val.Value;
+                      $rootScope.city_name = val.Text;
                       $rootScope.town_button = true;
                     }
                     else {
                       Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {
                         $rootScope.times = data;
+                        //  http://diyanet.gov.tr//UserFiles//AyEvreleri//sd3.gif
                         $rootScope.country_button = false;
                         $rootScope.city_button = false;
                         $rootScope.town_button = false;
