@@ -136,6 +136,8 @@ angular.module('ionic-modal-select', ['starter'])
     $rootScope.city_button = false;
     $rootScope.town_button = false;
     $rootScope.times_list = false;
+    $rootScope.check_country = false;
+    $rootScope.check_city = false;
     return {
         restrict: 'A',
         require : 'ngModel',
@@ -290,6 +292,7 @@ angular.module('ionic-modal-select', ['starter'])
                   $rootScope.city_button = true;
                   $rootScope.country_no = val.no;
                   $rootScope.country_name = val.country;
+                  $rootScope.check_country = true;
                   Cities.get(getSelectedValue(option).no).success(function(data) {
                     $rootScope.cities = data;
                   })
@@ -302,6 +305,7 @@ angular.module('ionic-modal-select', ['starter'])
                       $rootScope.city_no = val.Value;
                       $rootScope.city_name = val.Text;
                       $rootScope.town_button = true;
+                      $rootScope.check_city = true;
                     }
                     else {
                       Times.post($rootScope.country, $rootScope.city, val.Value).success(function(data) {

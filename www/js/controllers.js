@@ -209,5 +209,10 @@ angular.module('starter').controller("MainCtrl", function($scope, Cities, $rootS
   $scope.refresh = function() {
     $rootScope.times_list = false;
     $rootScope.country_button = true;
+    $rootScope.nameCity = false;
+    $rootScope.nameCountry = false;
+    $rootScope.nameTown = false;
+    $rootScope.check_country = false;
+    $rootScope.check_city = false;
   }
 })
