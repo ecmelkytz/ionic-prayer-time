@@ -137,7 +137,7 @@ angular.module('ionic-modal-select', ['starter'])
     $rootScope.town_button = false;
     $rootScope.times_list = false;
     $rootScope.check_country = false;
-    $rootScope.check_city = false;
+    $rootScope.check_town = false;
     return {
         restrict: 'A',
         require : 'ngModel',
@@ -289,6 +289,7 @@ angular.module('ionic-modal-select', ['starter'])
                 });
 
                 if (val.country != null) {
+                  $rootScope.city_name = null;
                   $rootScope.city_button = true;
                   $rootScope.country_no = val.no;
                   $rootScope.country_name = val.country;

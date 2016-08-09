@@ -1,4 +1,4 @@
-angular.module('starter').controller("MainCtrl", function($scope, Cities, $rootScope) {
+angular.module('starter').controller("MainCtrl", function($scope, Cities, $rootScope, Map, $filter, Towns, Times, $sce) {
   $scope.countries = [
     {no: "2", country: "TURKIYE", code: "tr"},
     {no: "33", country: "ABD", code: "us"},
@@ -215,4 +215,42 @@ angular.module('starter').controller("MainCtrl", function($scope, Cities, $rootS
     $rootScope.check_country = false;
     $rootScope.check_city = false;
   }
+
+  $scope.init = function() {
+      Map.get().then(function(response) {
+        $scope.location = response.data;
+        $rootScope.nameCountry = $scope.location.country_name;
+        var match_country = $filter('filter')($scope.countries, {code: $scope.location.country_code});
+        $rootScope.check_country = true;
+        $rootScope.check_city = true;
+        $rootScope.city_button = true;
+        $rootScope.nameCountry = match_country[0].country;
+        $rootScope.country_name = match_country[0].country;
+        $rootScope.nameCity = $scope.location.city;
+        $rootScope.city_name = $scope.location.city;
+        Cities.get(match_country[0].no).success(function(data) {
+          $rootScope.cities = data;
+          $scope.match_city = $filter('filter')($scope.cities, {Text: $scope.location.city});
+          Towns.get($scope.match_city[0].Value).success(function(data) {
+            $rootScope.towns = data;
+            if (typeof data[0] !== 'undefined') {
+              $rootScope.town_button = true;
+              $rootScope.check_city = true;
+            }
+            else {
+              Times.post($scope.match_country[0].Value, $scope.match_city[0].Value, $scope.match_city[0].Value).success(function(data) {
+                $rootScope.times = data;
+                $rootScope.country_name = $scope.match_country[0].country;
+                $rootScope.city_name = $scope.match_city[0].country;
+                $rootScope.moon = $sce.trustAsResourceUrl("http://diyanet.gov.tr//UserFiles//AyEvreleri//" + data.MoonSrc);
+                $rootScope.times_list = true;
+                $rootScope.country_button = false;
+                $rootScope.city_button = false;
+                $rootScope.town_button = false;
+              })
+            }
+          })
+        })
+      });
+    }
 })

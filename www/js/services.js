@@ -26,3 +26,12 @@ angular.module('starter')
     post: prayer_times
   }
 })
+
+.factory('Map', function($http) {
+  var get = function() {
+    return $http.get("https://geoip-db.com/json/");
+  }
+  return {
+    get: get
+  }
+})

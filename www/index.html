@@ -30,7 +30,7 @@
     <script src="js/services.js"></script>
 
   </head>
-  <body ng-app="starter" ng-controller="MainCtrl">
+  <body ng-app="starter" ng-controller="MainCtrl" ng-init="init()">
     <ion-pane>
       <ion-header-bar class="bar-stable" style="background-color:#F7BE81">
         <h1 class="title" style="color:gray">Namaz Vakitleri</h1>
@@ -38,7 +38,7 @@
       <ion-content class="padding back">
          <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-show="country_button">
            <span ng-if="!check_country">Ülke Seçin</span>
-           <span ng-if="check_country">{{nameCountry.country}}</span>
+           <span ng-if="check_country">{{nameCountry.country || nameCountry}}</span>
            <div class="option">
              <span class="flag-icon flag-icon-{{option.code}}"></span>
               {{option.country}}
@@ -46,13 +46,14 @@
          </button>
          <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
            <span ng-if="!check_city">Şehir Seçin</span>
-           <span ng-if="check_city">{{nameCity.Text}}</span>
+           <span ng-if="check_city">{{nameCity.Text || nameCity}}</span>
            <div class="option">
               {{option.Text}}
            </div>
          </button>
          <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
-           {{nameTown.Text | default: 'İlçe Seçin'}}
+           <span ng-if="!check_town">İlçe Seçin</span>
+           <span ng-if="check_town">{{nameTown.Text || nameTown}}</span>
            <div class="option">
               {{option.Text}}
            </div>
