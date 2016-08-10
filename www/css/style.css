@@ -29,3 +29,10 @@
 .item-input {
   padding: 2px 0 2px 16px;
 }
+
+.moon {
+  float:left;
+  height:90px;
+  margin-left:20px;
+  margin-bottom:20px;
+}
