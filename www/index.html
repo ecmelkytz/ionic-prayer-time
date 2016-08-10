@@ -38,24 +38,24 @@
       <ion-content class="padding back">
          <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-show="country_button">
            <span ng-if="!check_country">Ülke Seçin</span>
-           <span ng-if="check_country">{{nameCountry.country || nameCountry}}</span>
+           <span ng-if="check_country" ng-bind="nameCountry.country || nameCountry"></span>
            <div class="option">
              <span class="flag-icon flag-icon-{{option.code}}"></span>
-              {{option.country}}
+              <span ng-bind="option.country"></span>
            </div>
          </button>
          <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
            <span ng-if="!check_city">Şehir Seçin</span>
-           <span ng-if="check_city">{{nameCity.Text || nameCity || 'Şehir Seçin'}}</span>
+           <span ng-if="check_city" ng-bind="nameCity.Text || nameCity || 'Şehir Seçin'"></span>
            <div class="option">
-              {{option.Text}}
+              <span ng-bind="option.Text"></span>
            </div>
          </button>
          <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
            <span ng-if="!check_town">İlçe Seçin</span>
-           <span ng-if="check_town">{{nameTown.Text || nameTown}}</span>
+           <span ng-if="check_town" ng-bind="nameTown.Text || nameTown"></span>
            <div class="option">
-              {{option.Text}}
+              <span ng-bind="option.Text"></span>
            </div>
          </button>
 
@@ -67,35 +67,35 @@
            <img ng-src="{{moon}}" style="height:60px"></center></div>
            <label class="item item-input list-color">
              <div class="input-label"><b>İmsak: </b></div>
-             <div class="input-label"><b>{{times.Imsak}}</b></div>
+             <div class="input-label"><b ng-bind="times.Imsak"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Güneş: </b></div>
-             <div class="input-label"><b>{{times.Gunes}}</b></div>
+             <div class="input-label"><b ng-bind="times.Gunes"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Güneş Doğuş: </b></div>
-             <div class="input-label"><b>{{times.GunesDogus}}</b></div>
+             <div class="input-label"><b ng-bind="times.GunesDogus"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Güneş Batış: </b></div>
-             <div class="input-label"><b>{{times.GunesBatis}}</b></div>
+             <div class="input-label"><b ng-bind="times.GunesBatis"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Öğle: </b></div>
-             <div class="input-label"><b>{{times.Ogle}}</b></div>
+             <div class="input-label"><b ng-bind="times.Ogle"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>İkindi: </b></div>
-             <div class="input-label"><b>{{times.Ikindi}}</b></div>
+             <div class="input-label"><b ng-bind="times.Ikindi"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Aksam: </b></div>
-             <div class="input-label"><b>{{times.Aksam}}</b></div>
+             <div class="input-label"><b ng-bind="times.Aksam"></b></div>
            </label>
            <label class="item item-input list-color">
              <div class="input-label"><b>Yatsı: </b></div>
-             <div class="input-label"><b>{{times.Yatsi}}</b></div>
+             <div class="input-label"><b ng-bind="times.Yatsi"></b></div>
            </label>
            <center><a href="#" class="icon ion-refresh refresh" ng-click = "refresh()"></a></center>
          </div>
