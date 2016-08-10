@@ -46,7 +46,7 @@
          </button>
          <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
            <span ng-if="!check_city">Şehir Seçin</span>
-           <span ng-if="check_city">{{nameCity.Text || nameCity}}</span>
+           <span ng-if="check_city">{{nameCity.Text || nameCity || 'Şehir Seçin'}}</span>
            <div class="option">
               {{option.Text}}
            </div>
