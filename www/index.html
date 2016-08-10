@@ -36,7 +36,7 @@
         <h1 class="title" style="color:gray">Namaz Vakitleri</h1>
       </ion-header-bar>
       <ion-content class="padding back">
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Select a Country" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-show="country_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCountry" options="countries" modal-title="Ülke Seçin" has-search="true", on-select="getOption(option)", style="margin-top:200px", ng-show="country_button">
            <span ng-if="!check_country">Ülke Seçin</span>
            <span ng-if="check_country" ng-bind="nameCountry.country || nameCountry"></span>
            <div class="option">
@@ -44,14 +44,14 @@
               <span ng-bind="option.country"></span>
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="city_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameCity" options="cities" modal-title="Şehir Seçin" has-search="true", on-select="getOption(option)", ng-show="city_button">
            <span ng-if="!check_city">Şehir Seçin</span>
            <span ng-if="check_city" ng-bind="nameCity.Text || nameCity || 'Şehir Seçin'"></span>
            <div class="option">
               <span ng-bind="option.Text"></span>
            </div>
          </button>
-         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="Select a City" has-search="true", on-select="getOption(option)", ng-show="town_button">
+         <button class="button button-block button-dark" modal-select="" ng-model="nameTown" options="towns" modal-title="İlçe Seçin" has-search="true", on-select="getOption(option)", ng-show="town_button">
            <span ng-if="!check_town">İlçe Seçin</span>
            <span ng-if="check_town" ng-bind="nameTown.Text || nameTown"></span>
            <div class="option">
