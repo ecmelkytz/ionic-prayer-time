@@ -62,9 +62,14 @@
          <div class="list" ng-if = "times_list">
            <div class="list-color">
            <br>
-           <center><h4>{{country_name}} <span ng-if="city_name != null"> - {{city_name}}</span></h4></center>
-           <center><h5>{{town_name}}</h5>
-           <img ng-src="{{moon}}" style="height:60px"></center></div>
+            <img ng-src="{{moon}}" style="height:90px;float:left;margin-left:20px;">
+            <center>
+              <h4><span ng-bind="country_name"></span> <span ng-if="city_name != null"> - {{city_name}}</span><h4>
+              <h5 ng-bind="town_name"></h5>
+            </center>
+            <div style="clear: both;"></div>
+          </div>
+          <div style="clear: both;"></div>
            <label class="item item-input list-color">
              <div class="input-label"><b>İmsak: </b></div>
              <div class="input-label"><b ng-bind="times.Imsak"></b></div>
@@ -97,6 +102,7 @@
              <div class="input-label"><b>Yatsı: </b></div>
              <div class="input-label"><b ng-bind="times.Yatsi"></b></div>
            </label>
+           <br/>
            <center><a href="#" class="icon ion-refresh refresh" ng-click = "refresh()"></a></center>
          </div>
       </ion-content>
